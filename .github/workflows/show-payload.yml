@@ -1,10 +1,15 @@
 name: Show Payload
 
 on:
+  pull_request:
+    branches:
+      - master
   workflow_dispatch:
 jobs:
   show-payload:
     runs-on: ubuntu-latest
     steps:
       - name: Show Payload
-        run: echo "${{ toJson(github.event) }}"
+        run: |
+          echo "${{ toJson(github.event) }}"
+          echo "${{ github.event.pull_request.user.login || github.event.sender.login }}"
