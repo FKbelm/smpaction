@@ -1,0 +1,16 @@
+name: 承認
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Approving pull request"
+  approve:
+    runs-on: ubuntu-latest
+    environment: approver
+    steps:
+      - run: |
+          echo "Approving pull request: status ${{ github.event.pull_request.state }}"
