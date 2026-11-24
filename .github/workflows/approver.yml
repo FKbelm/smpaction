@@ -2,6 +2,8 @@ name: 承認
 on:
   pull_request:
     types: [opened]
+    paths: 
+      - 'approver/*'
 jobs:
   run:
     runs-on: ubuntu-latest
